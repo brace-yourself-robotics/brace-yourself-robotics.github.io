@@ -319,6 +319,7 @@ figcaption { color: var(--muted); font-size: var(--fs-small); }
 .capability-grid > div > span { display: block; color: #adb7bd; font-size: var(--fs-label); letter-spacing: 0.1em; }
 .capability-grid strong { display: block; margin: 0.5rem 0; font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 550; letter-spacing: -0.06em; line-height: 1.2; }
 .capability-grid small { font-size: 0.32em; }
+.capability-grid .range-dash { display: inline-block; margin: 0 0.12em; font-size: 0.55em; font-weight: 400; vertical-align: 0.28em; }
 .capability-grid p { color: var(--on-dark); font-size: var(--fs-small); line-height: 1.7; }
 .centre-compare, .position-grid { display: grid; gap: 1.5rem; margin-top: 3rem; }
 .centre-compare { grid-template-columns: repeat(2, minmax(0, 1fr)); }
