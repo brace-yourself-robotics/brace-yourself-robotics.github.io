@@ -30,8 +30,9 @@
       <nav id="navigation" aria-label="Primary navigation">
         <a href="#overview">Overview</a>
         <a href="#method">Method</a>
-        <a href="#experiments">Hardware</a>
-        <a href="#results">Results</a>
+        <a href="#force-capability">Hardware</a>
+        <a href="#results">Simulation</a>
+        <a href="#generalisation">Transfer</a>
         <a href="#paper-information">Paper</a>
       </nav>
     </header>
@@ -43,7 +44,6 @@
         </div>
         <div class="hero-overlay" aria-hidden="true"></div>
         <div class="hero-content">
-          <p class="review-status" data-review-status>Anonymous manuscript under review</p>
           <h1 id="hero-title">Brace Yourself</h1>
           <p class="hero-subtitle">
             Task-Conditioned Environmental Bracing<br class="desktop-break" />
@@ -55,9 +55,11 @@
             <p class="affiliations" data-affiliations></p>
             <p class="venue" data-venue hidden></p>
           </section>
-          <div class="project-links" data-project-links aria-label="Project resources">
-            <a class="project-link" href="./papers/brace-yourself.pdf">Paper</a>
-            <a class="project-link" href="https://www.youtube.com/watch?v=zPrGLxWJzI4">Video</a>
+          <div class="project-links" aria-label="Project resources">
+            <a class="project-link" data-link="paper" href="./papers/brace-yourself.pdf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V8z"/><path d="M14 3v5h5M8.5 13h7M8.5 16.5h7"/></svg>Paper</a>
+            <a class="project-link project-link--disabled" data-link="arxiv" aria-disabled="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4l14 16M19 4l-5.6 6.4M10.6 13.6 5 20"/></svg>arXiv<small>soon</small></a>
+            <a class="project-link" data-link="video" href="https://www.youtube.com/watch?v=zPrGLxWJzI4"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path class="fill" d="M10 9v6l5-3z"/></svg>Video</a>
+            <a class="project-link project-link--disabled" data-link="code" aria-disabled="true"><svg class="solid" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Code<small>soon</small></a>
           </div>
         </div>
         <button type="button" class="hero-toggle" aria-label="Play background video" hidden>Play</button>
@@ -70,14 +72,14 @@
 <section class="capability" id="capability" aria-labelledby="capability-heading">
   <div class="capability-backdrop" aria-hidden="true"></div>
   <div class="capability-inner">
-    <p class="section-kicker section-kicker--light">Supporting Hand Strategy</p>
+    <p class="section-kicker section-kicker--light">Supporting Hand Strategy (SHS)</p>
     <h2 id="capability-heading">Environmental bracing changes what a humanoid can do.</h2>
     <div class="research-highlights">
       <div><strong>60<span>N</span></strong><h3>Usable contact force</h3><p>With SHS at the centre and upper hardware test positions.</p></div>
-      <div><strong>30<span>%</span></strong><h3>Lower force-tracking error</h3><p>At T1 / 55 N, versus Generic.<br>Force RMS error: 13.1 → 9.2 N.</p></div>
-      <div><strong>0</strong><h3>Policy retraining</h3><p>For 5 cm task-region shifts, with newly optimised support references.</p></div>
+      <div><strong>30<span>%</span></strong><h3>Lower force-tracking error</h3><p>At 55&nbsp;N, versus Generic.<br>Force RMS error: 13.1 → 9.2&nbsp;N.</p></div>
+      <div><strong>0</strong><h3>Policy retraining</h3><p>For 5&nbsp;cm task-region shifts, with newly optimised support references.</p></div>
     </div>
-    <p class="protocol-note">Reported hardware results under the tested setting. T1 / 55 N tracking: 6 Generic and 7 SHS recordings. <a href="./papers/brace-yourself.pdf#page=5">Evaluation protocol and results ↗</a></p>
+    <p class="protocol-note"><a href="./papers/brace-yourself.pdf#page=5">Evaluation protocol ↗</a></p>
   </div>
 </section>
 
@@ -85,174 +87,180 @@
   <div class="text-width centered-heading">
     <p class="section-kicker">The idea</p>
     <h2 id="overview-heading">Brace with one hand.<br>Work with the other.</h2>
-    <p>Interaction forces can disturb a humanoid’s balance. SHS uses a supporting-hand contact to help resist those forces, while a separate working-arm policy follows the position–force task.</p>
+    <p class="balanced">Interaction forces can disturb a humanoid’s balance. The Supporting Hand Strategy (SHS) braces one hand against the environment, so the other can track a target position and force.</p>
   </div>
   <div class="content-width section-media">
-    <figure class="film"><video controls playsinline preload="none" poster="./images/presentation-poster.webp" width="1280" height="720" aria-label="Brace Yourself full research presentation">
+    <figure class="film"><video controls playsinline preload="none" poster="./images/presentation-poster.webp" width="1280" height="720" aria-label="Brace Yourself research video">
   <source src="./videos/presentation.mp4" type="video/mp4" />
   <a href="./videos/presentation.mp4">Open the recording</a>
 </video>
-      <figcaption><span>Research overview · <a href="https://www.youtube.com/watch?v=zPrGLxWJzI4">Watch on YouTube ↗</a></span><span>6:21 · Visual presentation · No audio</span></figcaption>
+      <figcaption><span>Research video · 3:22</span><a href="https://www.youtube.com/watch?v=zPrGLxWJzI4">Watch on YouTube ↗</a></figcaption>
     </figure>
-    <details class="explanation"><summary>Video description</summary><p>The presentation introduces the balance challenge in forceful manipulation, then explains how an offline optimiser selects one support configuration for an entire task region. A whole-body keypoint reference guides synchronous body and working-arm policies. Hardware demonstrations show support establishment, fixed-position force tests, and figure-eight tracking at 25, 40, and 55 N. Results compare SHS with a task-independent Generic reference and the Modular hardware baseline. Force arrows and overlays are visual annotations; the paper defines the evaluation metrics.</p></details>
     <div class="idea-points"><p>No human motion data</p><p>No online whole-body trajectory planning</p><p>No measured force input to the RL policies</p></div>
   </div>
 </section>
 
 <section class="section method" id="method" aria-labelledby="method-heading">
   <div class="text-width centered-heading"><p class="section-kicker">The method</p><h2 id="method-heading">One support configuration.<br>A whole region of work.</h2><p>Task-conditioned support is optimised offline. During execution, two learned policies coordinate the working arm and the rest of the body synchronously.</p></div>
-  <div class="content-width section-media"><figure class="paper-figure ">
+  <div class="content-width section-media"><figure class="paper-figure">
   <a href="./images/method-pipeline.webp" data-lightbox aria-label="Enlarge research figure"><img src="./images/method-pipeline.webp" width="2400" height="707" alt="SHS pipeline: task and support-contact regions, joint support optimisation, a shared support configuration, WBKR, and synchronous policies." loading="lazy" /></a>
-  <figcaption>From task-region requirements to environmental bracing. Figure 2.<span>Click to enlarge ↗</span></figcaption>
+  <figcaption>From task-region requirements to environmental bracing. Figure 2.</figcaption>
 </figure>
     <div class="method-cards">
-      <article><span>01 / OPTIMISE</span><h3>Find the brace</h3><p>The Task-Region Support Optimiser (TRSO) finds one shared body and supporting-arm configuration across working-hand position, normal, and force samples. SLSQP returns a local solution.</p></article>
-      <article><span>02 / REPRESENT</span><h3>Encode the geometry</h3><p>The Whole-Body Keypoint Representation (WBKR) encodes an 18D support reference in a heading frame fixed at task activation. The working hand follows its own command.</p></article>
-      <article><span>03 / EXECUTE</span><h3>Coordinate two policies</h3><p>A 7-joint working-arm policy and a 22-joint body policy run synchronously. The left hand maintains support; the right hand tracks the position–force target.</p></article>
+      <article><span>01 / OPTIMISE</span><h3>Find the brace</h3><p>The Task-Region Support Optimiser (TRSO) evaluates every working-hand position and force target in the task region together and returns one shared support configuration: foot placement, forward lean, waist and supporting-arm posture. Balance, friction and ZMP are checked offline, so nothing is replanned during the task.</p></article>
+      <article><span>02 / REPRESENT</span><h3>Encode the geometry</h3><p>The Whole-Body Keypoint Representation (WBKR) turns this configuration into an 18D reference: a pelvis support vector from the feet, plus torso, shoulder, supporting elbow and hand positions relative to the pelvis. The working arm is left out so it stays free for the task.</p></article>
+      <article><span>03 / EXECUTE</span><h3>Coordinate two policies</h3><p>The body policy (legs, waist, supporting arm) tracks the WBKR reference and holds the brace. The working-arm policy tracks the position and force command. Both read the same observation and act at the same time, with the target force as input but no measured force.</p></article>
     </div>
-    <div class="establish-layout"><figure class="video-card"><video controls playsinline preload="none" poster="./images/establish-poster.webp" width="1440" height="640" aria-label="Three camera views of the robot establishing environmental bracing">
+    <div class="establish-layout"><figure class="video-card"><video controls playsinline preload="none" poster="./images/establish-poster.webp" width="1280" height="560" aria-label="Three camera views of the robot establishing environmental bracing, then executing the task" data-loop>
   <source src="./videos/establish.mp4" type="video/mp4" />
   <a href="./videos/establish.mp4">Open the recording</a>
-</video><figcaption>From standing to supporting contact · Three camera views · 15 s</figcaption></figure><div><p class="section-kicker">From reference to contact</p><h3>Learn to establish<br>and maintain support.</h3><p>Both policies first learn on static targets. The body policy is then frozen while the working-arm policy is trained on continuous position–force trajectories.</p><p class="small-note">The learned policies receive target force. Measured wrist force is used for hardware evaluation.</p></div></div>
-  </div>
-</section>
-
-<section class="section demonstrations" id="experiments" aria-labelledby="experiments-heading">
-  <div class="text-width centered-heading"><p class="section-kicker">Hardware experiments</p><h2 id="experiments-heading">Move precisely.<br>Push with purpose.</h2><p>Figure-eight tracking on a 29-DoF Unitree G1. Select a target force to watch a representative recording and compare the paper’s aggregate tracking errors.</p></div>
-  <div class="content-width section-media">
-    <div class="force-tabs" role="tablist" aria-label="Trajectory target force" hidden>
-      <button id="tab-25" role="tab" aria-selected="true" aria-controls="force-25" tabindex="0">25 <span>N</span></button>
-      <button id="tab-40" role="tab" aria-selected="false" aria-controls="force-40" tabindex="-1">40 <span>N</span></button>
-      <button id="tab-55" role="tab" aria-selected="false" aria-controls="force-55" tabindex="-1">55 <span>N</span></button>
-      <span class="tabs-label">Target normal force</span>
-    </div>
-    <div class="force-panel" id="force-25" role="tabpanel" aria-labelledby="tab-25" tabindex="0">
-      <figure class="trajectory-player"><video controls playsinline preload="none" poster="./images/trajectory-25-poster.webp" width="800" height="800" aria-label="SHS 25 newton figure-eight hardware recording with telemetry overlay">
-  <source src="./videos/trajectory-25.mp4" type="video/mp4" />
-  <a href="./videos/trajectory-25.mp4">Open the recording</a>
-</video><figcaption>25 N command · Representative recording · Real-time playback</figcaption></figure>
-      <div class="trial-summary"><p class="section-kicker">Figure-eight tracking / T1</p><h3>A steady brace.<br>A moving working hand.</h3><p>The supporting hand maintains contact while the right hand traces the figure-eight trajectory.</p>
-        <table class="metric-table"><caption>Mean errors across trajectory recordings</caption><thead><tr><th scope="col">Metric</th><th scope="col">Generic</th><th scope="col">SHS</th></tr></thead><tbody>
-          <tr><th scope="row">Force RMS <span>N</span></th><td>7.9</td><td class="shs">3.3</td></tr>
-          <tr><th scope="row">Position RMS <span>cm</span></th><td>3.3</td><td class="shs">3.1</td></tr>
-          <tr class="sample-row"><th scope="row">Recordings</th><td>6</td><td>7</td></tr>
-        </tbody></table><p class="small-note">Position error is tangential to the task surface. These are manuscript table aggregates, not metrics calculated from the displayed clip.</p>
-      </div>
-    </div>
-    <div class="force-panel" id="force-40" role="tabpanel" aria-labelledby="tab-40" tabindex="0">
-      <figure class="trajectory-player"><video controls playsinline preload="none" poster="./images/trajectory-40-poster.webp" width="800" height="800" aria-label="SHS 40 newton figure-eight hardware recording with telemetry overlay">
-  <source src="./videos/trajectory-40.mp4" type="video/mp4" />
-  <a href="./videos/trajectory-40.mp4">Open the recording</a>
-</video><figcaption>40 N command · Representative recording · Real-time playback</figcaption></figure>
-      <div class="trial-summary"><p class="section-kicker">Figure-eight tracking / T1</p><h3>More force.<br>The same task.</h3><p>At a 40 N target, SHS approximately halves the normal-force RMS error relative to the task-independent Generic reference.</p>
-        <table class="metric-table"><caption>Mean errors across trajectory recordings</caption><thead><tr><th scope="col">Metric</th><th scope="col">Generic</th><th scope="col">SHS</th></tr></thead><tbody>
-          <tr><th scope="row">Force RMS <span>N</span></th><td>9.4</td><td class="shs">4.8</td></tr>
-          <tr><th scope="row">Position RMS <span>cm</span></th><td>3.8</td><td class="shs">2.7</td></tr>
-          <tr class="sample-row"><th scope="row">Recordings</th><td>6</td><td>5</td></tr>
-        </tbody></table><p class="small-note">Position error is tangential to the task surface. These are manuscript table aggregates, not metrics calculated from the displayed clip.</p>
-      </div>
-    </div>
-    <div class="force-panel" id="force-55" role="tabpanel" aria-labelledby="tab-55" tabindex="0">
-      <figure class="trajectory-player"><video controls playsinline preload="none" poster="./images/trajectory-55-poster.webp" width="800" height="1082" aria-label="SHS 55 newton figure-eight hardware recording with telemetry overlay">
-  <source src="./videos/trajectory-55.mp4" type="video/mp4" />
-  <a href="./videos/trajectory-55.mp4">Open the recording</a>
-</video><figcaption>55 N command · Representative recording · Real-time playback</figcaption></figure>
-      <div class="trial-summary"><p class="section-kicker">Figure-eight tracking / T1</p><h3>Task conditioning<br>matters at high loads.</h3><p>SHS reduces force RMS error by 30% and tangential-position RMS error by 29% relative to Generic at this force level.</p>
-        <table class="metric-table"><caption>Mean errors across trajectory recordings</caption><thead><tr><th scope="col">Metric</th><th scope="col">Generic</th><th scope="col">SHS</th></tr></thead><tbody>
-          <tr><th scope="row">Force RMS <span>N</span></th><td>13.1</td><td class="shs">9.2</td></tr>
-          <tr><th scope="row">Position RMS <span>cm</span></th><td>5.1</td><td class="shs">3.6</td></tr>
-          <tr class="sample-row"><th scope="row">Recordings</th><td>6</td><td>7</td></tr>
-        </tbody></table><p class="small-note">Position error is tangential to the task surface. These are manuscript table aggregates, not metrics calculated from the displayed clip.</p>
-      </div>
-    </div>
-    <p class="experiment-note"><strong>What is Generic?</strong> The same dual-policy architecture with one task-independent, training-set medoid WBKR reference, rather than a task-conditioned support configuration.</p>
-<figure class="paper-figure tracking-figure">
-  <a href="./images/trajectory-55n.webp" data-lightbox aria-label="Enlarge research figure"><img src="./images/trajectory-55n.webp" width="2200" height="1091" alt="Matched SHS and Generic hardware trajectories at 55 N in T1. SHS follows the target figure eight more closely; marker colour encodes measured force." loading="lazy" /></a>
-  <figcaption>Matched hardware tracking at 55 N. Marker colour denotes measured normal force. Figure 5.<span>Click to enlarge ↗</span></figcaption>
-</figure>
+</video><figcaption>Support establishment, then task execution · Three camera views</figcaption></figure><div><p class="section-kicker">On hardware</p><h3>Establish support.<br>Then execute the task.</h3><p>Starting from standing, the body policy leans the robot forward and places the supporting hand on the wall, following the WBKR reference. With the brace in place, the working-arm policy brings the other hand to the task surface and tracks the position and force command.</p></div></div>
   </div>
 </section>
 
 <section class="section force-capability" id="force-capability" aria-labelledby="force-heading">
-  <div class="text-width centered-heading"><p class="section-kicker section-kicker--light">Force capability</p><h2 id="force-heading">Additional support.<br>Greater usable force.</h2><p>Fixed-position tests step target force through 0–80 N. The paper evaluates five positions: the centre and four corners of task region T1.</p></div>
+  <div class="text-width centered-heading"><p class="section-kicker section-kicker--light">Hardware experiments · Force capability</p><h2 id="force-heading">Additional support.<br>Greater usable force.</h2><p>Fixed-position tests step the target force from 0 to 80&nbsp;N<br>at the centre and four corners of the task region.</p></div>
   <div class="content-width section-media">
     <div class="capability-grid">
-      <div><span>SHS / USABLE FORCE</span><strong>60 <small>N</small></strong><p>Centre and upper positions.<br>40 N at lower positions.</p></div>
+      <div><span>SHS / USABLE FORCE</span><strong>60 <small>N</small></strong><p>Centre and upper positions.<br>40&nbsp;N at lower positions.</p></div>
       <div><span>GENERIC / USABLE FORCE</span><strong>40–50 <small>N</small></strong><p>Task-independent support reference.</p></div>
-      <div><span>MODULAR / ONE-SECOND SUSTAINED LIMIT</span><strong>13.5 <small>N</small></strong><p>Never sustained more than 13.5 N for one second. Usable only at 10 N at the lower-right position.</p></div>
+      <div><span>MODULAR / ONE-SECOND SUSTAINED LIMIT</span><strong>13.5 <small>N</small></strong><p>Never sustained more than 13.5&nbsp;N for one second. Usable only at 10&nbsp;N at the lower-right position.</p></div>
     </div>
-    <p class="force-protocol">Usable force and maximum one-second sustained force are distinct measures. A usable level requires at least two of three trials to meet the paper’s force-band and variability criteria; usable ranges are contiguous.</p>
+    <div class="centre-compare">
+      <figure><video controls playsinline preload="none" poster="./images/modular-centre-poster.webp" width="1280" height="640" aria-label="Modular baseline without environmental bracing: centre-position force test with measured-force plot" data-loop="force">
+  <source src="./videos/modular-centre.mp4" type="video/mp4" />
+  <a href="./videos/modular-centre.mp4">Open the recording</a>
+</video><figcaption><strong>Without bracing · Modular</strong><span>Centre position</span></figcaption></figure>
+      <figure><video controls playsinline preload="none" poster="./images/shs-centre-poster.webp" width="1280" height="640" aria-label="SHS with environmental bracing: centre-position force sweep with measured-force plot" data-loop="force">
+  <source src="./videos/shs-centre.mp4" type="video/mp4" />
+  <a href="./videos/shs-centre.mp4">Open the recording</a>
+</video><figcaption><strong>With bracing · SHS</strong><span>Centre position · 2.8× speed</span></figcaption></figure>
+    </div>
     <div class="position-grid">
-      <figure><video controls playsinline preload="none" poster="./images/point-upper-poster.webp" width="600" height="808" aria-label="SHS upper left fixed-position force sweep">
+      <figure><video controls playsinline preload="none" poster="./images/point-upper-poster.webp" width="544" height="736" aria-label="SHS upper left fixed-position force sweep" data-loop="force">
   <source src="./videos/point-upper.mp4" type="video/mp4" />
   <a href="./videos/point-upper.mp4">Open the recording</a>
-</video><figcaption><strong>Upper left</strong><span>SHS / T1</span></figcaption></figure>
-      <figure><video controls playsinline preload="none" poster="./images/point-lower-left-poster.webp" width="600" height="808" aria-label="SHS lower left fixed-position force sweep">
+</video><figcaption><strong>Upper left</strong><span>SHS · 2× speed</span></figcaption></figure>
+      <figure><video controls playsinline preload="none" poster="./images/point-lower-left-poster.webp" width="544" height="736" aria-label="SHS lower left fixed-position force sweep" data-loop="force">
   <source src="./videos/point-lower-left.mp4" type="video/mp4" />
   <a href="./videos/point-lower-left.mp4">Open the recording</a>
-</video><figcaption><strong>Lower left</strong><span>SHS / T1</span></figcaption></figure>
-      <figure><video controls playsinline preload="none" poster="./images/point-lower-right-poster.webp" width="600" height="808" aria-label="SHS lower right fixed-position force sweep">
+</video><figcaption><strong>Lower left</strong><span>SHS · 2× speed</span></figcaption></figure>
+      <figure><video controls playsinline preload="none" poster="./images/point-lower-right-poster.webp" width="544" height="736" aria-label="SHS lower right fixed-position force sweep" data-loop="force">
   <source src="./videos/point-lower-right.mp4" type="video/mp4" />
   <a href="./videos/point-lower-right.mp4">Open the recording</a>
-</video><figcaption><strong>Lower right</strong><span>SHS / T1</span></figcaption></figure>
+</video><figcaption><strong>Lower right</strong><span>SHS · 2× speed</span></figcaption></figure>
     </div>
-    <p class="small-note">Representative force sweeps with measured-force overlays. Individual peaks do not define the usable-force range. Force arrows are illustrative screen annotations.</p>
-<figure class="paper-figure ">
+<figure class="paper-figure">
   <a href="./images/hardware-results.webp" data-lightbox aria-label="Enlarge research figure"><img src="./images/hardware-results.webp" width="2200" height="925" alt="Hardware usable-force ranges and one-second sustained maxima at five positions, alongside force and tangential-position RMS errors at five target forces." loading="lazy" /></a>
-  <figcaption>Hardware capability and tracking in T1. Solid ranges indicate usable force; open markers indicate one-second sustained maxima. Figure 4.<span>Click to enlarge ↗</span></figcaption>
+  <figcaption>Hardware capability and tracking. Solid ranges indicate usable force; open markers indicate one-second sustained maxima. Figure 4.</figcaption>
 </figure>
   </div>
 </section>
 
+<section class="section demonstrations" id="experiments" aria-labelledby="experiments-heading">
+  <div class="text-width centered-heading"><p class="section-kicker">Hardware experiments · Trajectory tracking</p><h2 id="experiments-heading">Follow the path.<br>Control the force.</h2><p class="balanced">On a 29-DoF Unitree G1, the working hand traces a <span class="nowrap">figure-eight</span> while pressing on the surface with a constant target force.</p></div>
+  <div class="content-width section-media">
+    <div class="force-select" hidden>
+      <span class="tabs-label" id="force-tabs-label">Target normal force</span>
+      <div class="force-tabs" role="tablist" aria-labelledby="force-tabs-label">
+        <button id="tab-25" role="tab" aria-selected="true" aria-controls="force-25" tabindex="0">25 <span>N</span></button>
+        <button id="tab-40" role="tab" aria-selected="false" aria-controls="force-40" tabindex="-1">40 <span>N</span></button>
+        <button id="tab-55" role="tab" aria-selected="false" aria-controls="force-55" tabindex="-1">55 <span>N</span></button>
+      </div>
+    </div>
+    <div class="force-panel" id="force-25" role="tabpanel" aria-labelledby="tab-25" tabindex="0">
+      <figure class="trajectory-player"><video controls playsinline preload="none" poster="./images/trajectory-25-poster.webp" width="800" height="640" aria-label="SHS 25 newton figure-eight hardware recording with telemetry overlay" data-loop>
+  <source src="./videos/trajectory-25.mp4" type="video/mp4" />
+  <a href="./videos/trajectory-25.mp4">Open the recording</a>
+</video><figcaption>25&nbsp;N command · Representative recording</figcaption></figure>
+      <div class="trial-summary"><p class="section-kicker">Figure-eight tracking</p><h3>A steady brace.<br>A moving working hand.</h3><p>The supporting hand maintains contact while the right hand traces the figure-eight trajectory.</p>
+        <table class="metric-table"><caption>Mean error over all recordings (from the paper)</caption><thead><tr><th scope="col">Metric</th><th scope="col">Generic</th><th scope="col">SHS</th></tr></thead><tbody>
+          <tr><th scope="row">Force RMS <span>N</span></th><td>7.9</td><td class="shs">3.3</td></tr>
+          <tr><th scope="row">Tangential position RMS <span>cm</span></th><td>3.3</td><td class="shs">3.1</td></tr>
+          <tr class="sample-row"><th scope="row">Recordings</th><td>6</td><td>7</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+    <div class="force-panel" id="force-40" role="tabpanel" aria-labelledby="tab-40" tabindex="0">
+      <figure class="trajectory-player"><video controls playsinline preload="none" poster="./images/trajectory-40-poster.webp" width="800" height="640" aria-label="SHS 40 newton figure-eight hardware recording with telemetry overlay" data-loop>
+  <source src="./videos/trajectory-40.mp4" type="video/mp4" />
+  <a href="./videos/trajectory-40.mp4">Open the recording</a>
+</video><figcaption>40&nbsp;N command · Representative recording</figcaption></figure>
+      <div class="trial-summary"><p class="section-kicker">Figure-eight tracking</p><h3>More force.<br>The same task.</h3><p>At a 40&nbsp;N target, SHS approximately halves the normal-force RMS error relative to the task-independent Generic reference.</p>
+        <table class="metric-table"><caption>Mean error over all recordings (from the paper)</caption><thead><tr><th scope="col">Metric</th><th scope="col">Generic</th><th scope="col">SHS</th></tr></thead><tbody>
+          <tr><th scope="row">Force RMS <span>N</span></th><td>9.4</td><td class="shs">4.8</td></tr>
+          <tr><th scope="row">Tangential position RMS <span>cm</span></th><td>3.8</td><td class="shs">2.7</td></tr>
+          <tr class="sample-row"><th scope="row">Recordings</th><td>6</td><td>5</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+    <div class="force-panel force-panel--wide" id="force-55" role="tabpanel" aria-labelledby="tab-55" tabindex="0">
+      <figure class="trajectory-player"><video controls playsinline preload="none" poster="./images/trajectory-55-poster.webp" width="1440" height="752" aria-label="SHS 55 newton figure-eight hardware recording beside matched SHS and Generic tracking results" data-loop>
+  <source src="./videos/trajectory-55.mp4" type="video/mp4" />
+  <a href="./videos/trajectory-55.mp4">Open the recording</a>
+</video><figcaption>55&nbsp;N command · SHS recording beside matched SHS and Generic trajectories · Marker colour denotes measured normal force</figcaption></figure>
+      <div class="trial-summary"><p class="section-kicker">Figure-eight tracking</p><h3>Task conditioning<br>matters at high loads.</h3><p>SHS reduces force RMS error by 30% and tangential-position RMS error by 29% relative to Generic at this force level.</p>
+        <table class="metric-table"><caption>Mean error over all recordings (from the paper)</caption><thead><tr><th scope="col">Metric</th><th scope="col">Generic</th><th scope="col">SHS</th></tr></thead><tbody>
+          <tr><th scope="row">Force RMS <span>N</span></th><td>13.1</td><td class="shs">9.2</td></tr>
+          <tr><th scope="row">Tangential position RMS <span>cm</span></th><td>5.1</td><td class="shs">3.6</td></tr>
+          <tr class="sample-row"><th scope="row">Recordings</th><td>6</td><td>7</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+    <p class="experiment-note"><strong>What is Generic?</strong> The same dual-policy architecture with one task-independent, training-set medoid WBKR reference, rather than a task-conditioned support configuration.</p>
+  </div>
+</section>
+
+
 <section class="section simulation" id="results" aria-labelledby="results-heading">
-  <div class="text-width centered-heading"><p class="section-kicker">Simulation ablations</p><h2 id="results-heading">What makes bracing work?</h2><p>The experiments separate environmental contact, reference guidance, and task conditioning across 30 independently trained runs per method, paired by seed.</p></div>
+  <div class="text-width centered-heading"><p class="section-kicker">Simulation ablations</p><h2 id="results-heading">What makes bracing work?</h2><p>Simulation removes environmental bracing, reference guidance or task conditioning one at a time. Each method is trained 30 times with independent seeds, paired across methods.</p></div>
   <div class="content-width section-media">
     <div class="results-layout">
       <div class="simulation-summary"><div class="bar-chart" role="img" aria-label="Mean simulation episode success: SHS 66.6 percent; No-bracing 2.0 percent."><p class="chart-title">Episode success <span>Higher is better</span></p><div class="bar-label"><strong>SHS</strong><span>66.6%</span></div><div class="bar-track"><div class="bar-shs" style="width:66.6%"></div></div><div class="bar-label"><strong>No-bracing</strong><span>2.0%</span></div><div class="bar-track"><div class="bar-baseline" style="width:2%"></div></div></div>
-        <h3>Bracing improves success.<br>The reference matters, too.</h3><p>SHS raises mean stable-contact hold ratio from 0.069 to 0.950 relative to No-bracing. Against Generic, force MAE falls by 3.02 N (26.9%), with similar position MAE.</p>
-        <details class="explanation"><summary>How is simulation success defined?</summary><p>An episode must establish a stable-contact window, achieve mean position error ≤ 5 cm and force MAE ≤ 10 N within that window, and avoid early termination. Success is averaged over all held-out episodes. Hold ratio is averaged over episodes that establish a stable-contact window.</p></details>
+        <h3>Bracing improves success.<br>The reference matters, too.</h3><p>SHS raises mean stable-contact hold ratio from 0.069 to 0.950 relative to No-bracing. Against Generic, force MAE falls by 3.02&nbsp;N (26.9%), with similar position MAE.</p>
+        <details class="explanation"><summary>How is simulation success defined?</summary><p>An episode must establish a stable-contact window, achieve mean position error ≤ 5&nbsp;cm and force MAE ≤ 10&nbsp;N within that window, and avoid early termination. Success is averaged over all held-out episodes. Hold ratio is averaged over episodes that establish a stable-contact window.</p></details>
       </div>
-<figure class="paper-figure ">
+<figure class="paper-figure">
   <a href="./images/simulation-ablation.webp" data-lightbox aria-label="Enlarge research figure"><img src="./images/simulation-ablation.webp" width="2200" height="1388" alt="Simulation ablations across SHS, Generic, No-reference and No-bracing: contact hold ratio, episode success, force and position MAE, and working-shoulder speed." loading="lazy" /></a>
-  <figcaption>30 paired runs. Hold-ratio panel: No-reference n = 17; other methods n = 30. Figure 3.<span>Click to enlarge ↗</span></figcaption>
+  <figcaption>30 paired runs. Hold-ratio panel: No-reference n = 17; other methods n = 30. Figure 3.</figcaption>
 </figure>
     </div>
-    <div class="table-scroll"><table class="ablation-table"><caption>What changes across the comparisons?</caption><thead><tr><th scope="col">Method</th><th scope="col">Environmental bracing</th><th scope="col">Support reference</th><th scope="col">Evaluation</th></tr></thead><tbody>
-      <tr><th scope="row">SHS</th><td>Yes</td><td>Task-conditioned</td><td>Simulation + hardware</td></tr>
-      <tr><th scope="row">Generic</th><td>Yes</td><td>Training-set medoid</td><td>Simulation + hardware</td></tr>
-      <tr><th scope="row">No-reference</th><td>Permitted</td><td>None</td><td>Simulation</td></tr>
-      <tr><th scope="row">No-bracing</th><td>No</td><td>None</td><td>Simulation</td></tr>
-      <tr><th scope="row">Modular</th><td>No</td><td>None; lower-body RL + arm IK</td><td>Hardware</td></tr>
+    <div class="table-scroll"><table class="ablation-table"><caption>Baseline and ablation methods</caption><thead><tr><th scope="col">Method</th><th scope="col">Bracing</th><th scope="col">WBKR ref.</th><th scope="col">Reference source</th><th scope="col">Experimental role</th></tr></thead><tbody>
+      <tr><th scope="row">SHS</th><td>Yes</td><td>Yes</td><td>Task-conditioned</td><td>Complete method</td></tr>
+      <tr><th scope="row">Generic</th><td>Yes</td><td>Yes</td><td>Training-set medoid</td><td>Task conditioning</td></tr>
+      <tr><th scope="row">No-reference</th><td>Yes</td><td>No</td><td>–</td><td>WBKR guidance</td></tr>
+      <tr><th scope="row">No-bracing</th><td>No</td><td>No</td><td>–</td><td>Environmental bracing</td></tr>
+      <tr><th scope="row">Modular</th><td>No</td><td>No</td><td>–</td><td>Hardware baseline</td></tr>
     </tbody></table></div>
   </div>
 </section>
 
 <section class="section transfer" id="generalisation" aria-labelledby="transfer-heading">
-  <div class="text-width centered-heading"><p class="section-kicker">Cross-region transfer</p><h2 id="transfer-heading">New region.<br>Same learned policies.</h2><p>Shift the task region 5 cm laterally or vertically, optimise a new support configuration, then execute with the same frozen policies—without policy retraining.</p></div>
-  <div class="content-width section-media"><div class="region-strip"><div><span>T1</span><strong>Original task region</strong><p>Reference configuration</p></div><div><span>T2</span><strong>5 cm lateral shift</strong><p>New optimised reference</p></div><div><span>T3</span><strong>5 cm vertical shift</strong><p>New optimised reference</p></div></div>
-<figure class="paper-figure ">
+  <div class="text-width centered-heading"><p class="section-kicker">Cross-region transfer</p><h2 id="transfer-heading">New region.<br>Same learned policies.</h2><p>Shift the task region by 5&nbsp;cm laterally or vertically and optimise a new support configuration. The same trained policies then execute it without retraining.</p></div>
+  <div class="content-width section-media"><div class="region-strip"><div><span>T1</span><strong>Original task region</strong><p>Reference configuration</p></div><div><span>T2</span><strong>5&nbsp;cm lateral shift</strong><p>New optimised reference</p></div><div><span>T3</span><strong>5&nbsp;cm vertical shift</strong><p>New optimised reference</p></div></div>
+<figure class="paper-figure">
   <a href="./images/cross-region-transfer.webp" data-lightbox aria-label="Enlarge research figure"><img src="./images/cross-region-transfer.webp" width="2200" height="1270" alt="WBKR distances from the training-set medoid, tracking errors and region geometries for T1, laterally shifted T2, and vertically shifted T3." loading="lazy" /></a>
-  <figcaption>Over 10–55 N, force RMS errors span 5.2–6.2 N and tangential-position RMS errors 2.8–3.4 cm across the three regions. Figure 6.<span>Click to enlarge ↗</span></figcaption>
+  <figcaption>Over 10–55&nbsp;N, force RMS errors span 5.2–6.2&nbsp;N and tangential-position RMS errors 2.8–3.4&nbsp;cm across the three regions. Figure 6.</figcaption>
 </figure>
-    <p class="scope-note"><strong>Scope of the evidence.</strong> Evaluation uses one planar support surface. Different surface orientations, curved contacts, grasps, and hooks remain untested. Both SHS and Generic tracking degrade at the 70 N target in T1.</p>
+    <p class="scope-note"><strong>Scope of the evidence.</strong> Evaluation uses one planar support surface. Different surface orientations, curved contacts, grasps, and hooks remain untested. Both SHS and Generic tracking degrade at the 70&nbsp;N target in T1.</p>
   </div>
 </section>
 
 <section class="section paper-section" id="paper-information" aria-labelledby="paper-heading">
-  <div class="content-width paper-layout"><div><p class="section-kicker">The paper</p><h2 id="paper-heading">Brace Yourself</h2><p class="paper-subtitle">Task-Conditioned Environmental Bracing for Forceful Humanoid Manipulation</p><a class="paper-button" href="./papers/brace-yourself.pdf">Read the full paper ↗</a><p class="small-note">Anonymous manuscript · 8 pages · PDF</p></div>
-    <div class="abstract"><h3>Abstract</h3><p>Forceful manipulation is challenging for humanoid robots because interaction forces can disturb whole-body balance. We introduce the Supporting Hand Strategy (SHS), which enables a humanoid to brace against the environment with one hand while performing forceful manipulation with the other. SHS optimises a task-conditioned support configuration that guides two synchronous reinforcement-learning policies, without human motion data or online whole-body trajectory planning. On a Unitree G1, SHS achieved usable contact forces up to 60 N, compared with a maximum sustained force of 13.5 N without environmental bracing, while substantially improving force tracking over a task-independent support configuration. The same policies generalised to different task regions without retraining. SHS therefore provides a simple mechanism for substantially extending humanoid forceful-manipulation capability.</p><p class="small-note">Abstract reproduced from the manuscript. Transfer uses newly optimised support references; the 13.5 N comparison is a one-second sustained-force limit.</p></div>
+  <div class="content-width paper-layout"><div><p class="section-kicker">The paper</p><h2 id="paper-heading">Brace Yourself</h2><p class="paper-subtitle">Task-Conditioned Environmental Bracing for Forceful Humanoid Manipulation</p><a class="paper-button" href="./papers/brace-yourself.pdf">Read the full paper ↗</a><p class="small-note">Submitted to IEEE Robotics and Automation Letters (RA-L) · 8 pages · PDF</p></div>
+    <div class="abstract"><h3>Abstract</h3><p>Forceful manipulation is challenging for humanoid robots because interaction forces can disturb whole-body balance. We introduce the Supporting Hand Strategy (SHS), which enables a humanoid to brace against the environment with one hand while performing forceful manipulation with the other. SHS optimises a task-conditioned support configuration that guides two synchronous reinforcement-learning policies, without human motion data or online whole-body trajectory planning. On a Unitree G1, SHS achieved usable contact forces up to 60&nbsp;N, compared with a maximum sustained force of 13.5&nbsp;N without environmental bracing, while substantially improving force tracking over a task-independent support configuration. The same policies generalised to different task regions without retraining. SHS therefore provides a simple mechanism for substantially extending humanoid forceful-manipulation capability.</p></div>
   </div>
-  <div class="content-width citation-layout" id="citation"><div><p class="section-kicker">Citation</p><h3>Anonymous manuscript</h3><p>Publication details will be added after review.</p></div><div class="citation-block"><button type="button" data-copy-citation hidden>Copy BibTeX</button><pre><code data-citation>@misc{brace_yourself,
+  <div class="content-width citation-layout" id="citation"><div><p class="section-kicker">Citation</p><h3>BibTeX</h3><p>Submitted to IEEE RA-L. Publication details will be added after review.</p></div><div class="citation-block"><button type="button" data-copy-citation hidden>Copy BibTeX</button><pre><code data-citation>@misc{brace_yourself,
   title = {Brace Yourself: Task-Conditioned Environmental
            Bracing for Forceful Humanoid Manipulation},
-  note = {Anonymous manuscript under review}
+  note = {Submitted to IEEE Robotics and Automation Letters}
 }</code></pre><p class="sr-only" data-copy-status role="status"></p></div></div>
 </section>
     </main>
 
     <footer class="site-footer">
       <p>Brace Yourself</p>
-      <p>Supporting Hand Strategy · Anonymous manuscript</p>
+      <p>Supporting Hand Strategy</p>
     </footer>
     <dialog class="lightbox" aria-label="Expanded research figure">
       <button type="button" class="lightbox-close" aria-label="Close expanded figure">Close ×</button>

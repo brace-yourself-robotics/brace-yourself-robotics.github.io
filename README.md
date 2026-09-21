@@ -24,25 +24,15 @@ The production output is `dist/`, served from `/`. The build verifies local refe
 root-domain metadata and the SHA-256 hashes in `ASSET_MANIFEST.json`.
 
 `src/site-config.js` controls resource links and site metadata. Author information
-remains hidden with `showAuthors: false`. The PDF is included; the arXiv link remains
-unset until its public URL is available.
+remains hidden with `showAuthors: false`. The PDF is included; the arXiv and Code
+buttons are shown as "soon" until `links.arxiv` / `links.code` are set.
 
 ## Deployment
 
-Deployment is disabled. `.github/workflows/deploy.yml.disabled` is an inactive template,
-not an executable GitHub Actions workflow. Building or pushing this repository does
-not enable GitHub Pages through that template.
-
-When publication is authorized:
-
-1. In Settings → Pages, select GitHub Actions as the publishing source. Leave Custom
-   domain empty.
-2. Rename `.github/workflows/deploy.yml.disabled` to `deploy.yml`, commit and push to main.
-3. In Actions, select Deploy static site to GitHub Pages; enable it if prompted, then
-   select Run workflow on main. Approve any required environment review.
-4. Wait for build and deploy to succeed and verify the website URL above.
-
-Only `dist/` is uploaded. No repository subpath or custom DNS is required.
+GitHub Pages is built by `.github/workflows/deploy.yml` (Settings → Pages → Source:
+GitHub Actions). The workflow runs on manual dispatch: Actions → Deploy static site to
+GitHub Pages → Run workflow on `main`. It builds with Node.js 24, runs the checks and
+uploads only `dist/`, served from `/`.
 
 ## Materials
 

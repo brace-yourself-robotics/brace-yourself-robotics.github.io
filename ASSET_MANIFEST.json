@@ -6,15 +6,11 @@
     },
     {
       "asset": "public/images/establish-poster.webp",
-      "sha256": "bdcb3aa773f868e443171f0d3d477fe26d1da412778d4577af7690be304011f5"
+      "sha256": "dd95c0f1be9fa72ba604132a4851c6820a2aa73a7d45226d9be9c03de85b83ff"
     },
     {
       "asset": "public/images/hardware-results.webp",
       "sha256": "add9b975351c8acf6a121b6038c7c6a8da8e346f513392952c2276b98cfac8aa"
-    },
-    {
-      "asset": "public/images/hero-poster.webp",
-      "sha256": "42da2f9e01591e54f435024e2876f32a047bf9764a3ab7198853001480737e68"
     },
     {
       "asset": "public/images/hero-wide-poster.webp",
@@ -25,24 +21,28 @@
       "sha256": "c3d5388132b7f547f62f1b32ce4a2f1bed760a6f0d544a138482e238cc200914"
     },
     {
-      "asset": "public/images/overview-hero.webp",
-      "sha256": "d2d7817e408a06b645f98d8859a7476ba4816d95a4cec6ed38174343dbe9dcd6"
+      "asset": "public/images/modular-centre-poster.webp",
+      "sha256": "626a9c7fd6260dd9cfe639dd07d9c20d54c417526dff796d4a3ea5a6737cce9e"
     },
     {
       "asset": "public/images/point-lower-left-poster.webp",
-      "sha256": "5a505b27d322325c94130a17fb3b543f1ab5bdf9742aba798dce0dd3b90f2b06"
+      "sha256": "315f00ff630a1dd33a8c82584e1ca6a00bdae7321e6898e26155cad221fd8188"
     },
     {
       "asset": "public/images/point-lower-right-poster.webp",
-      "sha256": "74401f4e0055b67adba84e4d913bf85b15d4a495341766d266e8a49da37741b0"
+      "sha256": "2a6da2faf7023c583514d119210ce4ced71d07cfe086ec00edccdc81f59bdb52"
     },
     {
       "asset": "public/images/point-upper-poster.webp",
-      "sha256": "6d9b670206babb4fea1f3b1e823a344816aab32152043f70a01d3eb880990140"
+      "sha256": "423a33d7d8f3ebc3bd4b31d0316f8b9ab765a47b717e8aad5eaae3c6b1f29190"
     },
     {
       "asset": "public/images/presentation-poster.webp",
-      "sha256": "7ce18b2ca53cabb7c9e61276d090bd07afcd8b34c11c8c8f12ef6657068980b3"
+      "sha256": "e213d84f5b077d6dce004f0777272521a6e257cc577db2192fa3c1e3459b173c"
+    },
+    {
+      "asset": "public/images/shs-centre-poster.webp",
+      "sha256": "ef9985599024158c5b22f3897a1b6c54bf80173b6db90287f5e9f9a199ed7668"
     },
     {
       "asset": "public/images/simulation-ablation.webp",
@@ -54,19 +54,15 @@
     },
     {
       "asset": "public/images/trajectory-25-poster.webp",
-      "sha256": "cc599ff45c62448aa86cc26faa52cbbc9dc606901b9fda33a39925d0754d94df"
+      "sha256": "8247eada130706ecc1bb8d9b40c6b46d38d696a158761646feff4dd41d7471e5"
     },
     {
       "asset": "public/images/trajectory-40-poster.webp",
-      "sha256": "9cfc9140ac7b18819689629a0f192e178c65614d07b6103b306092b56eeae479"
+      "sha256": "a9a30fc75fbeff80ebfaf6eb50a20843d11f35f0e626697d72316be544cf6030"
     },
     {
       "asset": "public/images/trajectory-55-poster.webp",
-      "sha256": "0220b5b6d0f5c3a3d09e215a5481b4a0df1c727e9d728895b6871f9a9671c8be"
-    },
-    {
-      "asset": "public/images/trajectory-55n.webp",
-      "sha256": "abb6a7d007fd00aafbd4dc38f0700c2b2ed693229f0730700d2e5c4e9054dcf5"
+      "sha256": "7193ddc9469800dcec5405b1c1dd9d48228e8999393be64f049ecd7c55ae6a28"
     },
     {
       "asset": "public/papers/brace-yourself.pdf",
@@ -74,43 +70,47 @@
     },
     {
       "asset": "public/videos/establish.mp4",
-      "sha256": "e5cf798e7d09f6998d95e5822079070a6d24ec73bc16dc34a56740abdcd57774"
+      "sha256": "b2eb3fb28caf38de7c9b2cde40e8d2cd55fe05ba88c6874742a37a943740e5ca"
     },
     {
       "asset": "public/videos/hero-wide.mp4",
       "sha256": "885080ea2918ec46661a41299af615d728d65f547d7e26b3f514762b96fc94dd"
     },
     {
-      "asset": "public/videos/hero.mp4",
-      "sha256": "cc55c652082003eccf8aeaa359c8984b4705e9c75217c16a6f1ddc19ac0ba22f"
+      "asset": "public/videos/modular-centre.mp4",
+      "sha256": "31b3c5855dfb1fe82a813e928c760a6594fdcaf3044979bf0e0a42d420e236f3"
     },
     {
       "asset": "public/videos/point-lower-left.mp4",
-      "sha256": "3bd6f9bec1ad4982d184ca1764a2e69530746e714ed7525cac33ec9108a41292"
+      "sha256": "8925038810c3d669d83a8cf6074a727ca3282040c77ee9d2ef384d613266a30c"
     },
     {
       "asset": "public/videos/point-lower-right.mp4",
-      "sha256": "42879076e274cb4d8ad00da2c1debbc1bcc43c8e6bd8e07ea853e611a915a38c"
+      "sha256": "ed2983e45252cd5ec45ce85d3ba179b0556ca8fa7bbaf6fdb2de8f724aa9912e"
     },
     {
       "asset": "public/videos/point-upper.mp4",
-      "sha256": "27d905fc5875d1ab3d344259f98084e15dc76abeefcb01221544c0e6cf3dc3fe"
+      "sha256": "ba1082c08c8884802b8cc96607b67bacf83467389d02efec9adb092d286cad09"
     },
     {
       "asset": "public/videos/presentation.mp4",
-      "sha256": "bf861803eeb6039adfef5eff4ff932d8fa5ea29e3ba26afe3b2890e63ed8868b"
+      "sha256": "3dca70c90e773f53f2a31c6090ca73a8b493ec6e444e10ee5dc4189e160142d4"
+    },
+    {
+      "asset": "public/videos/shs-centre.mp4",
+      "sha256": "6427cd3e217753f3fab41f61445a82b711d5e5af82b43aab79fcfb2e4d66ed1b"
     },
     {
       "asset": "public/videos/trajectory-25.mp4",
-      "sha256": "28c1c220755b72b74414e8adff312de35340e8cd1cbda1678666e8dfefbd0474"
+      "sha256": "802b71f7e1a6e2ec7102304f14d281980d67f11cdfc8a4b547c00fd793d281eb"
     },
     {
       "asset": "public/videos/trajectory-40.mp4",
-      "sha256": "e42582976144e5e6ca7dd8aa15ea0e428107c217a0443f5822899267e2231106"
+      "sha256": "b73fa8ead4861a74cb06d854642c83754722eda597648408d69f8b2eeafa9d09"
     },
     {
       "asset": "public/videos/trajectory-55.mp4",
-      "sha256": "c7c8cd6d00c0aed8f84427f95d247f3330e7c27ee857bcbed9c2871f3a96fe94"
+      "sha256": "e9cc618752798a436f78ea526aeccea54b6ebb4f73cbdf876fed919c34f08ce7"
     }
   ]
 }

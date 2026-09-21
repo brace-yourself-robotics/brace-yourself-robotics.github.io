@@ -24,7 +24,7 @@ export async function checkSite(directory = path.join(root, "dist")) {
   }
   // Content coverage is separate from layout: a visual revision must not drop the
   // complete research materials the user asked us to preserve.
-  const recordings = ["presentation", "establish", "trajectory-25", "trajectory-40", "trajectory-55", "point-upper", "point-lower-left", "point-lower-right"];
+  const recordings = ["presentation", "establish", "trajectory-25", "trajectory-40", "trajectory-55", "point-upper", "point-lower-left", "point-lower-right", "modular-centre", "shs-centre"];
   for (const name of recordings) if (!html.includes(`src="./videos/${name}.mp4"`)) fail(`Required research recording missing: ${name}`);
   if ((html.match(/class="metric-table"/g) || []).length !== 3) fail("Each of the three trajectory forces needs its aggregate data table");
   if (!html.includes('class="ablation-table"') || !html.includes('class="region-strip"')) fail("Ablation and region comparison content must be retained");

@@ -1,5 +1,3 @@
-# Inactive template: rename to deploy.yml only when publication is authorized.
-# Organization site is served at /; upload dist/ without a repository prefix.
 name: Deploy static site to GitHub Pages
 
 on:

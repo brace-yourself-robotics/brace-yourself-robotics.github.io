@@ -1,7 +1,6 @@
 import { siteConfig } from "./site-config.js";
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-document.querySelector("[data-review-status]").textContent = siteConfig.reviewStatus;
 if (siteConfig.showAuthors) {
   const section = document.querySelector("[data-author-section]");
   section.hidden = false;
@@ -13,15 +12,18 @@ if (siteConfig.showAuthors) {
     venue.hidden = false;
   }
 }
-const links = document.querySelector("[data-project-links]");
-links.replaceChildren();
-for (const [key, label] of [["paper", "Paper"], ["arxiv", "arXiv"], ["video", "Video"], ["code", "Code"]]) {
-  if (!siteConfig.links[key]) continue;
-  const link = document.createElement("a");
-  link.className = "project-link";
-  link.href = siteConfig.links[key];
-  link.textContent = label;
-  links.append(link);
+// Links without a configured URL stay visible but disabled (e.g. arXiv before release).
+for (const link of document.querySelectorAll("[data-link]")) {
+  const url = siteConfig.links[link.dataset.link];
+  if (url) {
+    link.href = url;
+    link.classList.remove("project-link--disabled");
+    link.removeAttribute("aria-disabled");
+  } else {
+    link.removeAttribute("href");
+    link.classList.add("project-link--disabled");
+    link.setAttribute("aria-disabled", "true");
+  }
 }
 const header = document.querySelector(".site-header");
 const updateHeader = () => header.classList.toggle("is-scrolled", window.scrollY > 24);
@@ -58,12 +60,13 @@ function selectTab(tab, moveFocus = false) {
     item.tabIndex = selected ? 0 : -1;
     const panel = document.getElementById(item.getAttribute("aria-controls"));
     panel.hidden = !selected;
-    if (!selected) panel.querySelector("video").pause();
+    const video = panel.querySelector("video");
+    if (selected && video.paused) video.currentTime = 0;
   }
+  loops.forEach(updateLoop);
   if (moveFocus) tab.focus();
 }
-tablist.hidden = false;
-selectTab(tabs[0]);
+tablist.closest(".force-select").hidden = false;
 for (const [index, tab] of tabs.entries()) {
   tab.addEventListener("click", () => selectTab(tab));
   tab.addEventListener("keydown", event => {
@@ -76,12 +79,42 @@ for (const [index, tab] of tabs.entries()) {
   });
 }
 
-// Native controls load recordings on demand. There is no autoplay below the hero.
-const recordings = [...document.querySelectorAll("video")];
+// Short clips ([data-loop]) play muted and looped while on screen; the static HTML keeps
+// controls for no-JS and reduced-motion visitors. Longer recordings load on demand.
+const autoLoop = !reducedMotion.matches;
+const loops = [...document.querySelectorAll("video[data-loop]")];
+const recordings = [...document.querySelectorAll("video:not([data-loop])")];
+const onScreen = new Set();
+// Clips sharing a data-loop value run as one group: all play while any is visible, kept in step.
+const groupOf = video => video.dataset.loop ? loops.filter(v => v.dataset.loop === video.dataset.loop) : [video];
+function updateLoop(video) {
+  const play = autoLoop && !document.hidden && !video.closest("[hidden]") && groupOf(video).some(v => onScreen.has(v));
+  if (play) video.play().catch(() => {}); else video.pause();
+}
+if (autoLoop) {
+  for (const video of loops) {
+    video.controls = false;
+    video.muted = video.defaultMuted = video.loop = true;
+  }
+  for (const group of new Set(loops.filter(v => v.dataset.loop).map(v => v.dataset.loop))) {
+    const [leader, ...followers] = groupOf(loops.find(v => v.dataset.loop === group));
+    leader.addEventListener("timeupdate", () => {
+      const d = leader.duration;
+      if (!d) return;
+      for (const video of followers) {
+        const drift = ((video.currentTime - leader.currentTime + 1.5 * d) % d) - d / 2;
+        if (!video.paused && Math.abs(drift) > 0.2) video.currentTime = leader.currentTime;
+      }
+    });
+  }
+}
+selectTab(tabs[0]);
 for (const video of recordings) {
   video.addEventListener("play", () => {
-    for (const other of document.querySelectorAll("video")) if (other !== video) other.pause();
+    for (const other of recordings) if (other !== video) other.pause();
   });
+}
+for (const video of [...loops, ...recordings]) {
   video.addEventListener("error", () => {
     if (video.parentElement.querySelector(".video-error")) return;
     const link = document.createElement("a");
@@ -96,6 +129,13 @@ if ("IntersectionObserver" in window) {
     for (const { target, isIntersecting } of entries) if (!isIntersecting) target.pause();
   }, { threshold: 0.05 });
   recordings.forEach(video => pauseOffscreen.observe(video));
+  const watchLoops = new IntersectionObserver(entries => {
+    for (const { target, isIntersecting } of entries) {
+      if (isIntersecting) onScreen.add(target); else onScreen.delete(target);
+      groupOf(target).forEach(updateLoop);
+    }
+  }, { threshold: 0.05 });
+  loops.forEach(video => watchLoops.observe(video));
 }
 
 const heroContainer = document.querySelector("[data-hero-media]");
@@ -152,6 +192,7 @@ reducedMotion.addEventListener("change", () => { if (reducedMotion.matches) hero
 document.addEventListener("visibilitychange", () => {
   if (document.hidden) document.querySelectorAll("video").forEach(video => video.pause());
   else maybePlayHero();
+  loops.forEach(updateLoop);
 });
 
 // Native dialog supplies modal focus handling and Escape support. Image links still
