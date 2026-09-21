@@ -1,0 +1,22 @@
+dist/
+node_modules/
+.DS_Store
+*.log
+
+# Local credentials and machine-specific configuration.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local tooling and generated review artifacts.
+.venv/
+__pycache__/
+*.pyc
+.idea/
+.vscode/
+.private/
+coverage/
+playwright-report/
+test-results/

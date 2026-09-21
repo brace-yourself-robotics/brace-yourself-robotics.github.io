@@ -1,0 +1,116 @@
+{
+  "assets": [
+    {
+      "asset": "public/images/cross-region-transfer.webp",
+      "sha256": "2f1e2aa97efd908664f51011ed6c68397d16276557f186107043aacc8eefdd85"
+    },
+    {
+      "asset": "public/images/establish-poster.webp",
+      "sha256": "bdcb3aa773f868e443171f0d3d477fe26d1da412778d4577af7690be304011f5"
+    },
+    {
+      "asset": "public/images/hardware-results.webp",
+      "sha256": "add9b975351c8acf6a121b6038c7c6a8da8e346f513392952c2276b98cfac8aa"
+    },
+    {
+      "asset": "public/images/hero-poster.webp",
+      "sha256": "42da2f9e01591e54f435024e2876f32a047bf9764a3ab7198853001480737e68"
+    },
+    {
+      "asset": "public/images/hero-wide-poster.webp",
+      "sha256": "f781a60c4348178465e94247fd30e7a0d3834e0e32754987dc2db95e0386d2bc"
+    },
+    {
+      "asset": "public/images/method-pipeline.webp",
+      "sha256": "c3d5388132b7f547f62f1b32ce4a2f1bed760a6f0d544a138482e238cc200914"
+    },
+    {
+      "asset": "public/images/overview-hero.webp",
+      "sha256": "d2d7817e408a06b645f98d8859a7476ba4816d95a4cec6ed38174343dbe9dcd6"
+    },
+    {
+      "asset": "public/images/point-lower-left-poster.webp",
+      "sha256": "5a505b27d322325c94130a17fb3b543f1ab5bdf9742aba798dce0dd3b90f2b06"
+    },
+    {
+      "asset": "public/images/point-lower-right-poster.webp",
+      "sha256": "74401f4e0055b67adba84e4d913bf85b15d4a495341766d266e8a49da37741b0"
+    },
+    {
+      "asset": "public/images/point-upper-poster.webp",
+      "sha256": "6d9b670206babb4fea1f3b1e823a344816aab32152043f70a01d3eb880990140"
+    },
+    {
+      "asset": "public/images/presentation-poster.webp",
+      "sha256": "7ce18b2ca53cabb7c9e61276d090bd07afcd8b34c11c8c8f12ef6657068980b3"
+    },
+    {
+      "asset": "public/images/simulation-ablation.webp",
+      "sha256": "a52159259e7ed3097828fb314e86525c0c22f5be066ab71376c1c8ab4e483d21"
+    },
+    {
+      "asset": "public/images/social-preview.jpg",
+      "sha256": "b8f248024e5e06ef85b7c94eb0d76d263104eb2c352a8a6e6674b9ea805f70ed"
+    },
+    {
+      "asset": "public/images/trajectory-25-poster.webp",
+      "sha256": "cc599ff45c62448aa86cc26faa52cbbc9dc606901b9fda33a39925d0754d94df"
+    },
+    {
+      "asset": "public/images/trajectory-40-poster.webp",
+      "sha256": "9cfc9140ac7b18819689629a0f192e178c65614d07b6103b306092b56eeae479"
+    },
+    {
+      "asset": "public/images/trajectory-55-poster.webp",
+      "sha256": "0220b5b6d0f5c3a3d09e215a5481b4a0df1c727e9d728895b6871f9a9671c8be"
+    },
+    {
+      "asset": "public/images/trajectory-55n.webp",
+      "sha256": "abb6a7d007fd00aafbd4dc38f0700c2b2ed693229f0730700d2e5c4e9054dcf5"
+    },
+    {
+      "asset": "public/papers/brace-yourself.pdf",
+      "sha256": "71e64c197e3d2c314b144fbba112e16ec860e5b4fef304ab9024ae3a7456a748"
+    },
+    {
+      "asset": "public/videos/establish.mp4",
+      "sha256": "e5cf798e7d09f6998d95e5822079070a6d24ec73bc16dc34a56740abdcd57774"
+    },
+    {
+      "asset": "public/videos/hero-wide.mp4",
+      "sha256": "885080ea2918ec46661a41299af615d728d65f547d7e26b3f514762b96fc94dd"
+    },
+    {
+      "asset": "public/videos/hero.mp4",
+      "sha256": "cc55c652082003eccf8aeaa359c8984b4705e9c75217c16a6f1ddc19ac0ba22f"
+    },
+    {
+      "asset": "public/videos/point-lower-left.mp4",
+      "sha256": "3bd6f9bec1ad4982d184ca1764a2e69530746e714ed7525cac33ec9108a41292"
+    },
+    {
+      "asset": "public/videos/point-lower-right.mp4",
+      "sha256": "42879076e274cb4d8ad00da2c1debbc1bcc43c8e6bd8e07ea853e611a915a38c"
+    },
+    {
+      "asset": "public/videos/point-upper.mp4",
+      "sha256": "27d905fc5875d1ab3d344259f98084e15dc76abeefcb01221544c0e6cf3dc3fe"
+    },
+    {
+      "asset": "public/videos/presentation.mp4",
+      "sha256": "bf861803eeb6039adfef5eff4ff932d8fa5ea29e3ba26afe3b2890e63ed8868b"
+    },
+    {
+      "asset": "public/videos/trajectory-25.mp4",
+      "sha256": "28c1c220755b72b74414e8adff312de35340e8cd1cbda1678666e8dfefbd0474"
+    },
+    {
+      "asset": "public/videos/trajectory-40.mp4",
+      "sha256": "e42582976144e5e6ca7dd8aa15ea0e428107c217a0443f5822899267e2231106"
+    },
+    {
+      "asset": "public/videos/trajectory-55.mp4",
+      "sha256": "c7c8cd6d00c0aed8f84427f95d247f3330e7c27ee857bcbed9c2871f3a96fe94"
+    }
+  ]
+}

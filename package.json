@@ -1,0 +1,14 @@
+{
+  "name": "brace-yourself-robotics.github.io",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check.mjs",
+    "dev": "node scripts/dev.mjs"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}
