@@ -5,7 +5,7 @@ export const siteConfig = {
   venue: null,
   links: {
     paper: "./papers/brace-yourself.pdf",
-    arxiv: null, // Set the arXiv abstract URL here once it is public.
+    arxiv: "https://arxiv.org/abs/2609.25486",
     video: "https://www.youtube.com/watch?v=zPrGLxWJzI4",
     code: null, // Set the GitHub repository URL here once the code is released.
   },
